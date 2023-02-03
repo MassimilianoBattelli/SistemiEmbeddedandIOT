@@ -1,3 +1,3 @@
 # SistemiEmbeddedandIOT
 
-![Alt text](/scheme.jpg?raw=true "Optional Title")
+![Alt text](/scheme.png?raw=true "Optional Title")
