@@ -1,8 +1,8 @@
 #include <ESP8266WiFi.h>
 #include <MQTT.h>
 
-const char ssid[] = "";
-const char pass[] = "";
+const char ssid[] = "yourwifiname";
+const char pass[] = "yourwifipassword";
 
 WiFiClient net;
 MQTTClient client;

@@ -10,14 +10,17 @@
 </head>
 <body>
     <h1>Progetto d'esame IOT</h1>
+    <div><iframe src="https://iotunibo.cloud.shiftr.io/embed?widgets=1" width="1100" height="600" frameborder="0" allowfullscreen></iframe></div>
+    <button id="button">Invia messaggio all'ESP</button>
+    <button type = "button" onclick = "CreateTextFile();">Create Text File</button>
+    
     <table>
         <tr>
-          <th>Sensore</th>
+          <th>Topic</th>
           <th>Temperatura</th>
+          <th>QoS</th>
         </tr>
-      </table>
-    <button id="button">Click Me</button>
-    <button type = "button" onclick = "CreateTextFile();">Create Text File</button>
+    </table>
 </body>
 </html>
 <script src="./JS.js"></script>
@@ -41,11 +44,11 @@
     client.subscribe('Topic');
   });
 
-  client.on('message', function(topic, message) {
-    console.log(topic + ': ' + message.toString());
+  client.on('message', function(topic, message, packet) {
+    console.log(topic + ' ' + 'Payload: ' + message.toString() + ' Qos ' + packet.qos);
     arr.push(message.toString());
     console.log(arr);
-    generateTable(table, message.toString());
+    generateTable(table, topic, message.toString(), packet.qos);
   });
   
   document.querySelector('button').addEventListener('click', function() {
@@ -53,11 +56,17 @@
     //generateTable(table, arr);
   });
   
-  function generateTable(table, element) {
-          let row = table.insertRow();
+  function generateTable(ftable, ftopic, felement, fQoS) {
+          let row = ftable.insertRow();
           let cell = row.insertCell();
-          let text = document.createTextNode(element.toString());
-          cell.appendChild(text);   
+          let text = document.createTextNode(ftopic);
+          cell.appendChild(text);
+          let cell2 = row.insertCell();
+          let text2 = document.createTextNode(felement);
+          cell2.appendChild(text2);
+          let cell3 = row.insertCell();
+          let text3 = document.createTextNode(fQoS);
+          cell3.appendChild(text3);    
   }
 </script>
 
