@@ -11,9 +11,10 @@
 <body>
     <h1>Progetto d'esame IOT</h1>
     <div><iframe src="https://iotunibo.cloud.shiftr.io/embed?widgets=1" width="1100" height="600" frameborder="0" allowfullscreen></iframe></div>
-    <button id="button">Invia messaggio all'ESP</button>
-    <button type = "button" onclick = "CreateTextFile();">Create Text File</button>
-    
+    <div class="buttons">
+      <button id="button">Invia messaggio all'ESP</button>
+      <button type = "button" onclick = "CreateTextFile();">Download data</button>
+    </div>  
     <table>
         <tr>
           <th>Topic</th>
@@ -69,4 +70,25 @@
           cell3.appendChild(text3);    
   }
 </script>
-
+<style>
+  body{
+    background-color: darkslategrey;
+  }
+  iframe {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  h1{
+    text-align: center;
+    color:white;
+  }
+  .buttons{
+    text-align: center;
+  }
+  table{
+    margin-left: auto;
+    margin-right: auto;
+    color:white;
+  }
+</style>
