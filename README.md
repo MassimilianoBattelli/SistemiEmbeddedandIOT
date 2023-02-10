@@ -1,7 +1,7 @@
 # WeatherApp
 
 Funzionalità:
-- L'obiettivo è quello di simulare un sistema con sensore di temperatura i cui dati vengono trasmessi tramite protocollo MQTT a un server su un broswer
+- L'obiettivo è quello di simulare un sistema con sensore di temperatura i cui dati vengono trasmessi tramite protocollo MQTT a un server su un browser
 - I dati possono venire salvati in un file di testo dalla pagina del browser
 - Il broker usato è quello fornito dal sito https://www.shiftr.io/ 
 - Il sensore fisico non è presente, i dati sono generati randomicamente
