@@ -1,8 +1,9 @@
 #include <ESP8266WiFi.h>
 #include <MQTT.h>
+#include <WiFiManager.h> 
 
-const char ssid[] = "yourwifiname";
-const char pass[] = "yourwifipassword";
+//const char ssid[] = "yourwifiname";
+//const char pass[] = "yourwifipassword";
 
 WiFiClient net;
 MQTTClient client;
@@ -32,9 +33,24 @@ void messageReceived(String &topic, String &payload) {
 }
 
 void setup() {
+  WiFi.mode(WIFI_STA);
   Serial.begin(115200);
+  WiFiManager wm;
+  wm.resetSettings();
+  bool res;
+    // res = wm.autoConnect(); // auto generated AP name from chipid
+    // res = wm.autoConnect("AutoConnectAP"); // anonymous ap
+    res = wm.autoConnect("ESP8266AccessPoint","password"); // password protected ap
+    if(!res) {
+        Serial.println("Failed to connect");
+        // ESP.restart();
+    } 
+    else {
+        //if you get here you have connected to the WiFi    
+        Serial.println("connected to WiFi");
+    }
   // start wifi and mqtt
-  WiFi.begin(ssid, pass);
+  //WiFi.begin(ssid, pass);
   client.begin("iotunibo.cloud.shiftr.io", net);
   client.onMessage(messageReceived);
 
