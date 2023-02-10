@@ -1,3 +1,3 @@
 # WeatherApp
 
-![Alt text](/scheme.png?raw=true "Optional Title")
+![](/gif.gif)
